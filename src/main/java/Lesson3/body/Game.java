@@ -42,17 +42,16 @@ public class Game {
 
     private final boolean isFromFile;
 
-    public Game(final Users users,
-                final WinCheck winCheck, final DrawCheck drawCheck,
-                final Logs logs, final ParsingXml parsingXml, boolean isFromFile) {
-        this.users = users;
-        this.winCheck = winCheck;
-        this.drawCheck = drawCheck;
-        this.logs = logs;
-        this.parsingXml = parsingXml;
+    public Game(boolean isFromFile) {
+        this.users = new Users();
+        this.winCheck = new WinCheck();
+        this.drawCheck = new DrawCheck();
+        this.logs = new Logs();
+        this.parsingXml = new ParsingXml();
+        this.isFromFile = isFromFile;
+
         playerOne = new Player();
         playerTwo = new Player();
-        this.isFromFile = isFromFile;
     }
 
     public void play()
