@@ -11,14 +11,20 @@ import Lesson3.logic.XmlReader.Move;
 import Lesson3.logic.XmlReader.Player;
 import Lesson3.logic.XmlReader.Root;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
+import static Lesson3.LauncherNew.parsingJson;
+
 public class Game {
 
-    public Player playerOne;
+    public static Player playerOne;
 
-    public Player playerTwo;
+    public static Player playerTwo;
+
+    public static  List<Move> moves = new ArrayList<>();
 
     private final Logs logs;
 
@@ -42,8 +48,8 @@ public class Game {
         this.drawCheck = drawCheck;
         this.logs = logs;
         this.parsingXml = parsingXml;
-        this.playerOne = new Player();
-        this.playerTwo = new Player();
+        playerOne = new Player();
+        playerTwo = new Player();
         this.isFromFile = isFromFile;
     }
 
@@ -81,6 +87,7 @@ public class Game {
         if(!isFromFile) {
             parsingXml.parse(playerOne, playerTwo);
         }
+        parsingJson.parse(playerOne, playerTwo, moves);
 }
     private boolean makePlayerMove(Player player) {
         System.out.println(player.getName() + " '" + player.getSymbol() + "' :");

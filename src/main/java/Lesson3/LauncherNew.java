@@ -3,20 +3,23 @@ package Lesson3;
 import Lesson3.body.Game;
 import Lesson3.logic.DrawCheck;
 import Lesson3.logic.GamePlay;
+import Lesson3.logic.Json.ParsingJson;
 import Lesson3.logic.Logs;
 import Lesson3.logic.ParsingXml;
 import Lesson3.logic.Users;
 import Lesson3.logic.WinCheck;
 import Lesson3.logic.XmlReader.Root;
 
+
+
 public class LauncherNew {
 
     public static GamePlay gamePlay;
-
+public  static  ParsingJson parsingJson;
     public static void main(String[] args) throws Exception {
 
         gamePlay = new GamePlay();
-
+        parsingJson = new ParsingJson();
         if (args.length == 0) {
             new Game(
                     new Users(),

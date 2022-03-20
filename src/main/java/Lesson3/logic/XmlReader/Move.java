@@ -1,14 +1,17 @@
 package Lesson3.logic.XmlReader;
 
 public  final class Move {
-    final   int playerId;
-    final   int coordinate;
-    final    int num;
+       int playerId;
+       int coordinate;
+        int num;
 
-    public Move(final int playerId, final int coordinate,  int num) {
+    public Move( int playerId,  int coordinate,  int num) {
         this.playerId = playerId;
         this.coordinate = coordinate;
          this.num = num;
+    }
+
+    public Move() {
     }
 
     public int getPlayerId() {

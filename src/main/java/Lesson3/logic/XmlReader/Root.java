@@ -12,12 +12,14 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import static Lesson3.body.Game.moves;
+
 
 public class Root {
 
     public static final List<Player> players = new ArrayList<>();
 
-    public static final List<Move> moves = new ArrayList<>();
+  //  public static final List<Move> moves = new ArrayList<>();
 
     public static Move getMoveByIdAndName(Integer playerId, Integer moveCounter ) {
         Move result = null;
