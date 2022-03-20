@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface Parse {
 
-     void parse(Player playerOne, Player playerTwo, List<Move> moves) throws Exception;
+     void parse(Player player1, Player player2, List<Move> moves) throws Exception;
 }

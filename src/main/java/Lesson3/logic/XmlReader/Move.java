@@ -1,8 +1,13 @@
 package Lesson3.logic.XmlReader;
 
+import com.google.gson.annotations.Expose;
+
 public  final class Move {
+    @Expose
        int playerId;
+    @Expose
        int coordinate;
+    @Expose
         int num;
 
     public Move( int playerId,  int coordinate,  int num) {

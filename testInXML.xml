@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Gameplay>
+    <PLayer id="1" name="1" symbol="X"/>
+    <PLayer id="2" name="2" symbol="O"/>
+    <Game>
+        <Step num="1" playerId="1">5</Step>
+        <Step num="1" playerId="2">1</Step>
+        <Step num="2" playerId="1">4</Step>
+        <Step num="2" playerId="2">2</Step>
+        <Step num="3" playerId="1">6</Step>
+    </Game>
+    <GameResult WINNER="1" playerId="1" symbol="X"/>
+</Gameplay>

@@ -1,0 +1,160 @@
+555 ('X') make 1 move to 1-1
+777 ('O') make 1 move to 2-0
+555 ('X') make 2 move to 2-1
+777 ('O') make 2 move to 1-0
+555 ('X') make 3 move to 0-1
+555 ('X') WIN !!!
+1111 ('X') make 1 move to 1-1
+2222 ('O') make 1 move to 2-0
+1111 ('X') make 2 move to 2-1
+2222 ('O') make 2 move to 1-0
+1111 ('X') make 3 move to 0-1
+1111 ('X') WIN !!!
+111 ('X') make 1 move to 1-1
+222 ('O') make 1 move to 2-0
+111 ('X') make 2 move to 1-0
+222 ('O') make 2 move to 2-1
+111 ('X') make 3 move to 1-2
+111 ('X') WIN !!!
+111 ('X') make 1 move to 1-1
+222 ('O') make 1 move to 2-1
+111 ('X') make 2 move to 2-0
+222 ('O') make 2 move to 1-0
+111 ('X') make 3 move to 0-2
+111 ('X') WIN !!!
+111 ('X') make 1 move to 1-1
+222 ('O') make 1 move to 2-0
+111 ('X') make 2 move to 2-1
+222 ('O') make 2 move to 0-1
+111 ('X') make 3 move to 1-0
+222 ('O') make 3 move to 2-2
+111 ('X') make 4 move to 1-2
+111 ('X') WIN !!!
+55 ('X') make 1 move to 1-1
+111 ('X') make 1 move to 1-1
+222 ('O') make 1 move to 2-1
+111 ('X') make 2 move to 2-0
+222 ('O') make 2 move to 1-0
+111 ('X') make 3 move to 0-2
+111 ('X') WIN !!!
+11 ('X') make 1 move to 1-1
+22 ('O') make 1 move to 2-0
+11 ('X') make 2 move to 2-1
+22 ('O') make 2 move to 1-0
+11 ('X') make 3 move to 0-1
+11 ('X') WIN !!!
+777 ('X') make 1 move to 1-1
+666 ('O') make 1 move to 2-0
+777 ('X') make 2 move to 2-1
+666 ('O') make 2 move to 1-0
+777 ('X') make 3 move to 0-1
+777 ('X') WIN !!!
+111 ('X') make 1 move to 1-2
+22222 ('O') make 1 move to 2-0
+111 ('X') make 2 move to 1-1
+22222 ('O') make 2 move to 2-1
+111 ('X') make 3 move to 1-0
+111 ('X') WIN !!!
+123123 ('X') make 1 move to 1-1
+55555 ('O') make 1 move to 2-0
+123123 ('X') make 2 move to 2-1
+55555 ('O') make 2 move to 1-0
+123123 ('X') make 3 move to 0-1
+123123 ('X') WIN !!!
+123123 ('X') make 1 move to 1-1
+999 ('O') make 1 move to 2-0
+123123 ('X') make 2 move to 2-1
+999 ('O') make 2 move to 1-0
+123123 ('X') make 3 move to 2-2
+999 ('O') make 3 move to 0-0
+999 ('O') WIN !!!
+954 ('X') make 1 move to 1-1
+111 ('O') make 1 move to 2-0
+954 ('X') make 2 move to 2-1
+111 ('O') make 2 move to 1-0
+954 ('X') make 3 move to 0-1
+954 ('X') WIN !!!
+9999 ('X') make 1 move to 1-1
+555 ('O') make 1 move to 2-0
+9999 ('X') make 2 move to 2-1
+555 ('O') make 2 move to 1-0
+9999 ('X') make 3 move to 0-1
+9999 ('X') WIN !!!
+7777 ('X') make 1 move to 1-1
+5555 ('O') make 1 move to 2-0
+7777 ('X') make 2 move to 2-1
+5555 ('O') make 2 move to 1-0
+7777 ('X') make 3 move to 0-1
+7777 ('X') WIN !!!
+999 ('X') make 1 move to 1-0
+444 ('O') make 1 move to 1-1
+999 ('X') make 2 move to 2-0
+444 ('O') make 2 move to 2-1
+999 ('X') make 3 move to 0-0
+999 ('X') WIN !!!
+123123 ('X') make 1 move to 1-1
+999 ('O') make 1 move to 2-0
+123123 ('X') make 2 move to 2-1
+999 ('O') make 2 move to 1-0
+123123 ('X') make 3 move to 0-1
+123123 ('X') WIN !!!
+99 ('X') make 1 move to 1-1
+77 ('O') make 1 move to 2-0
+99 ('X') make 2 move to 2-1
+77 ('O') make 2 move to 1-0
+99 ('X') make 3 move to 0-1
+99 ('X') WIN !!!
+33 ('X') make 1 move to 1-1
+222 ('O') make 1 move to 2-1
+33 ('X') make 2 move to 1-0
+222 ('O') make 2 move to 2-0
+33 ('X') make 3 move to 1-2
+33 ('X') WIN !!!
+111 ('X') make 1 move to 1-1
+222 ('O') make 1 move to 2-1
+111 ('X') make 2 move to 1-0
+222 ('O') make 2 move to 2-0
+111 ('X') make 3 move to 1-2
+111 ('X') WIN !!!
+99 ('X') make 1 move to 1-1
+77 ('O') make 1 move to 2-1
+99 ('X') make 2 move to 1-0
+77 ('O') make 2 move to 2-0
+99 ('X') make 3 move to 1-2
+99 ('X') WIN !!!
+1111 ('X') make 1 move to 1-1
+222 ('O') make 1 move to 2-0
+1111 ('X') make 2 move to 2-1
+222 ('O') make 2 move to 1-0
+1111 ('X') make 3 move to 0-1
+1111 ('X') WIN !!!
+1212 ('X') make 1 move to 1-1
+111 ('O') make 1 move to 2-0
+1212 ('X') make 2 move to 2-1
+111 ('O') make 2 move to 1-0
+1212 ('X') make 3 move to 0-1
+1212 ('X') WIN !!!
+99 ('X') make 1 move to 1-1
+7 ('O') make 1 move to 2-0
+99 ('X') make 2 move to 2-1
+7 ('O') make 2 move to 1-0
+99 ('X') make 3 move to 0-1
+99 ('X') WIN !!!
+1 ('X') make 1 move to 1-1
+2 ('O') make 1 move to 2-1
+1 ('X') make 2 move to 2-0
+2 ('O') make 2 move to 1-0
+1 ('X') make 3 move to 0-2
+1 ('X') WIN !!!
+11 ('X') make 1 move to 1-1
+22 ('O') make 1 move to 2-1
+11 ('X') make 2 move to 1-0
+22 ('O') make 2 move to 2-0
+11 ('X') make 3 move to 1-2
+11 ('X') WIN !!!
+1 ('X') make 1 move to 1-1
+2 ('O') make 1 move to 2-0
+1 ('X') make 2 move to 1-0
+2 ('O') make 2 move to 2-1
+1 ('X') make 3 move to 1-2
+1 ('X') WIN !!!

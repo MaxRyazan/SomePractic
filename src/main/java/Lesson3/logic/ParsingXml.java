@@ -1,5 +1,6 @@
 package Lesson3.logic;
 
+import Lesson3.Parse;
 import Lesson3.logic.XmlReader.Move;
 import Lesson3.logic.XmlReader.Player;
 import org.w3c.dom.Document;
@@ -14,13 +15,14 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.List;
 
 import static Lesson3.LauncherNew.gamePlay;
 
 
-public class ParsingXml {
+public class ParsingXml implements Parse {
 
-    public void parse(Player playerOne, Player playerTwo) throws ParserConfigurationException, FileNotFoundException, TransformerException {
+    public void parse(Player playerOne, Player playerTwo, List<Move> moves) throws ParserConfigurationException, FileNotFoundException, TransformerException {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -47,7 +49,7 @@ public class ParsingXml {
 
         root.appendChild(game);
 
-        for (Move value : gamePlay.moves) {
+        for (Move value : moves) {
             Element step = document.createElement("Step");
             step.setAttribute("num", Integer.toString(value.getNum()));
             step.setAttribute("playerId", Integer.toString(value.getPlayerId()));

@@ -10,6 +10,8 @@ import Lesson3.logic.WinCheck;
 import Lesson3.logic.XmlReader.Move;
 import Lesson3.logic.XmlReader.Player;
 import Lesson3.logic.XmlReader.Root;
+import com.google.gson.annotations.Expose;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +21,11 @@ import javax.xml.transform.TransformerException;
 import static Lesson3.LauncherNew.parsingJson;
 
 public class Game {
-
+    @Expose
     public static Player playerOne;
-
+    @Expose
     public static Player playerTwo;
-
+    @Expose
     public static  List<Move> moves = new ArrayList<>();
 
     private final Logs logs;
@@ -85,7 +87,7 @@ public class Game {
         }
 
         if(!isFromFile) {
-            parsingXml.parse(playerOne, playerTwo);
+            parsingXml.parse(playerOne, playerTwo, moves);
         }
         parsingJson.parse(playerOne, playerTwo, moves);
 }
@@ -94,7 +96,7 @@ public class Game {
 
         Cell movedCell = users.printUserMove(player, isFromFile);
 
-        LauncherNew.gamePlay.moves.add(new Move(
+        moves.add(new Move(
                 Integer.parseInt(player.getId()),
                 movedCell.getCellNumber(),
                 player.getMoveCounter()

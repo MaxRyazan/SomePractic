@@ -4,14 +4,20 @@ package Lesson3.logic;
 import Lesson3.body.Game;
 import Lesson3.logic.XmlReader.Move;
 import Lesson3.logic.XmlReader.Player;
+import com.google.gson.annotations.Expose;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GamePlay {
+    @Expose
     Player playerOne;
+    @Expose
     Player playerTwo;
+    @Expose
     public List<Move> moves = new ArrayList<>();
+    @Expose
+    private GameResult gameResult;
 
 
 
@@ -24,6 +30,22 @@ public class GamePlay {
     public GamePlay() {
     }
 
+    public Player getPlayerOne() {
+        return playerOne;
+    }
+
+    public void setPlayerOne(final Player playerOne) {
+        this.playerOne = playerOne;
+    }
+
+    public Player getPlayerTwo() {
+        return playerTwo;
+    }
+
+    public void setPlayerTwo(final Player playerTwo) {
+        this.playerTwo = playerTwo;
+    }
+
     public List<Move> getMoves() {
         return moves;
     }
@@ -32,26 +54,14 @@ public class GamePlay {
         this.moves = moves;
     }
 
-    public Player getPlayerOne() {
-        return playerOne;
-    }
-
-    public void setPlayerOne( Player playerOne) {
-        Game.playerOne = playerOne;
-    }
-
-    public Player getPlayerTwo() {
-        return playerTwo;
-    }
-
-    public void setPlayerTwo(final Player playerTwo) {
-       Game.playerTwo = playerTwo;
-    }
-
     @Override
     public String toString() {
         return "GamePlay{" +
                 "moves=" + moves +
                 '}';
+    }
+
+    public void setGameResult(final GameResult gameResult) {
+        this.gameResult = gameResult;
     }
 }

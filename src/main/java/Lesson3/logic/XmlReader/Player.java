@@ -1,14 +1,19 @@
 package Lesson3.logic.XmlReader;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.gson.annotations.Expose;
+
 
 public class Player {
+    @Expose
     private String id;
+    @Expose
     private String name;
+    @Expose
     private String symbol;
-    @JsonIgnore
+
     private int moveCounter;
-    @JsonIgnore
+
     private boolean isWinner;
 
     public Player( String id,  String name,  String symbol) {
@@ -33,15 +38,12 @@ public class Player {
     public String getSymbol() {
         return symbol;
     }
-@JsonIgnore
     public int getMoveCounter() {
         return moveCounter;
     }
-@JsonIgnore
     public boolean isWinner() {
         return isWinner;
     }
-@JsonIgnore
     public void setWinner(boolean winner) {
         isWinner = winner;
     }
@@ -57,7 +59,7 @@ public class Player {
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
-@JsonIgnore
+
     public void increaseMoveCount() {
         moveCounter++;
     }
