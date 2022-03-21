@@ -2,14 +2,16 @@ package Lesson3.logic;
 
 import Lesson3.body.Cell;
 import Lesson3.body.Maps;
-import Lesson3.logic.XmlReader.Move;
-import Lesson3.logic.XmlReader.Player;
-import Lesson3.logic.XmlReader.Root;
-
+import Lesson3.logic.Xml.Move;
+import Lesson3.logic.Xml.Player;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import static Lesson3.body.Game.moves;
 
 public class Users {
 
@@ -77,7 +79,7 @@ public class Users {
         if (!isFromFile) {
             cell = makeMove();
         } else {
-            Move playersMove = Root.getMoveByIdAndName(Integer.parseInt(player.getId()), player.getMoveCounter());
+            Move playersMove = getMoveByIdAndName(Integer.parseInt(player.getId()), player.getMoveCounter());
             cell = convert(playersMove.getCoordinate());
         }
 
@@ -101,4 +103,19 @@ public class Users {
     private boolean isNotBlank(String name) {
         return !name.isBlank();
     }
+
+    public static Move getMoveByIdAndName(Integer playerId, Integer moveCounter ) {
+        Move result = null;
+
+        for (Move move : moves) {
+            if(playerId.equals(move.getPlayerId()) && moveCounter.equals(move.num)) {
+                result = move;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+
 }

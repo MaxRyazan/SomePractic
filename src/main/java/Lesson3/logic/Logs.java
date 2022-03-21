@@ -1,6 +1,6 @@
 package Lesson3.logic;
 
-import Lesson3.logic.XmlReader.Player;
+import Lesson3.logic.Xml.Player;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;

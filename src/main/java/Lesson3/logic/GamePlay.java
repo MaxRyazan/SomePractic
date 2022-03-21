@@ -1,9 +1,8 @@
 
 package Lesson3.logic;
 
-import Lesson3.body.Game;
-import Lesson3.logic.XmlReader.Move;
-import Lesson3.logic.XmlReader.Player;
+import Lesson3.logic.Xml.Move;
+import Lesson3.logic.Xml.Player;
 import com.google.gson.annotations.Expose;
 
 import java.util.ArrayList;
@@ -19,6 +18,7 @@ public class GamePlay {
     @Expose
     private GameResult gameResult;
 
+    public static  List<Player> players = new ArrayList<>();
 
 
     public GamePlay(Player player1,  Player player2, List<Move> moves) {

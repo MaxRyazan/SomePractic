@@ -1,26 +1,68 @@
-package Lesson3.logic;
+package Lesson3.logic.Xml;
 
 import Lesson3.Parse;
-import Lesson3.logic.XmlReader.Move;
-import Lesson3.logic.XmlReader.Player;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Text;
+import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.List;
 
-import static Lesson3.LauncherNew.gamePlay;
+import static Lesson3.body.Game.moves;
+
+import static Lesson3.logic.GamePlay.players;
 
 
 public class ParsingXml implements Parse {
+
+    @Override
+    public void read(final String filename) throws Exception {
+        File file = new File(filename);
+        Document doc;
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        doc = dbf.newDocumentBuilder().parse(file);
+
+        NodeList playerElements = doc.getDocumentElement().getElementsByTagName("PLayer");
+        for (int i = 0; i < playerElements.getLength(); i++) {
+            Node player = playerElements.item(i);
+            NamedNodeMap attributes = player.getAttributes();
+            players.add(new Player(attributes.getNamedItem("id").getNodeValue(),
+                    attributes.getNamedItem("name").getNodeValue(),
+                    attributes.getNamedItem("symbol").getNodeValue()
+            ));
+        }
+        for (Player value : players) {
+            System.out.printf("Информации о игроках: ID игрока - %s, имя игрока - %s, символ игрока - %s %n",
+                    value.getId(), value.getName(), value.getSymbol()
+            );
+        }
+
+        NodeList movesElements = doc.getDocumentElement().getElementsByTagName("Step");
+
+        for (int i = 0; i < movesElements.getLength(); i++) {
+            Node move = movesElements.item(i);
+            NamedNodeMap attributes = move.getAttributes();
+
+            moves.add(new Move(Integer.parseInt(attributes.getNamedItem("playerId").getNodeValue()),
+                    Integer.parseInt(move.getTextContent()),
+                    Integer.parseInt(attributes.getNamedItem("num").getNodeValue())
+            ));
+        }
+        for (Move value : moves) {
+            System.out.printf("Информации о ходах: номер хода - %s, ID игрока - %s, координата хода - %s %n",
+                    value.getNum(), value.getPlayerId(), value.getCoordinate()
+            );
+        }
+    }
 
     public void parse(Player playerOne, Player playerTwo, List<Move> moves) throws ParserConfigurationException, FileNotFoundException, TransformerException {
 

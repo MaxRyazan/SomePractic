@@ -1,6 +1,6 @@
 package Lesson3.logic;
 
-import Lesson3.logic.XmlReader.Player;
+import Lesson3.logic.Xml.Player;
 import com.google.gson.annotations.Expose;
 
 public class GameResult {

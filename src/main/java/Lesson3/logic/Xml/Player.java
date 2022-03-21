@@ -1,6 +1,5 @@
-package Lesson3.logic.XmlReader;
+package Lesson3.logic.Xml;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.annotations.Expose;
 
 

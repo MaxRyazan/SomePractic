@@ -1,9 +1,8 @@
 package Lesson3.logic.Json;
 
-
 import Lesson3.logic.GameResult;
-import Lesson3.logic.XmlReader.Move;
-import Lesson3.logic.XmlReader.Player;
+import Lesson3.logic.Xml.Move;
+import Lesson3.logic.Xml.Player;
 import java.util.List;
 import static Lesson3.body.Game.*;
 

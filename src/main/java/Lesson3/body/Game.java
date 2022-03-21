@@ -1,24 +1,17 @@
 package Lesson3.body;
 
 import Lesson3.LauncherNew;
-import Lesson3.logic.CheckGamersNames;
-import Lesson3.logic.DrawCheck;
-import Lesson3.logic.Logs;
-import Lesson3.logic.ParsingXml;
-import Lesson3.logic.Users;
-import Lesson3.logic.WinCheck;
-import Lesson3.logic.XmlReader.Move;
-import Lesson3.logic.XmlReader.Player;
-import Lesson3.logic.XmlReader.Root;
+import Lesson3.Parse;
+import Lesson3.logic.*;
+import Lesson3.logic.Json.ParsingJson;
+import Lesson3.logic.Xml.Move;
+import Lesson3.logic.Xml.ParsingXml;
+import Lesson3.logic.Xml.Player;
+
 import com.google.gson.annotations.Expose;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-
-import static Lesson3.LauncherNew.parsingJson;
 
 public class Game {
     @Expose
@@ -27,6 +20,8 @@ public class Game {
     public static Player playerTwo;
     @Expose
     public static  List<Move> moves = new ArrayList<>();
+
+//    public static  List<Player> players = new ArrayList<>();
 
     private final Logs logs;
 
@@ -42,7 +37,10 @@ public class Game {
 
     private final boolean isFromFile;
 
-    public Game(boolean isFromFile) {
+    private final Parse parser;
+
+
+    public Game(boolean isFromFile, LauncherNew.ConvertType convertType)  {
         this.users = new Users();
         this.winCheck = new WinCheck();
         this.drawCheck = new DrawCheck();
@@ -50,12 +48,19 @@ public class Game {
         this.parsingXml = new ParsingXml();
         this.isFromFile = isFromFile;
 
+        if(LauncherNew.ConvertType.XML.equals(convertType)){
+            parser = new ParsingXml();
+        } else {
+                parser = new ParsingJson();
+        }
+
         playerOne = new Player();
         playerTwo = new Player();
+
     }
 
     public void play()
-            throws FileNotFoundException, ParserConfigurationException, TransformerException {
+            throws Exception {
         if (!isFromFile) {
             playerOne.setName(CheckGamersNames.getPlayersName("Введите имя первого игрока:"));
             playerOne.setId("1");
@@ -65,8 +70,8 @@ public class Game {
             playerTwo.setId("2");
             playerTwo.setSymbol("O");
         } else {
-            playerOne = Root.players.get(0);
-            playerTwo = Root.players.get(1);
+            playerOne = GamePlay.players.get(0);
+            playerTwo = GamePlay.players.get(1);
         }
 
         maps.printMapOnce();
@@ -86,9 +91,9 @@ public class Game {
         }
 
         if(!isFromFile) {
-            parsingXml.parse(playerOne, playerTwo, moves);
+           parser.parse(playerOne, playerTwo, moves);
         }
-        parsingJson.parse(playerOne, playerTwo, moves);
+
 }
     private boolean makePlayerMove(Player player) {
         System.out.println(player.getName() + " '" + player.getSymbol() + "' :");

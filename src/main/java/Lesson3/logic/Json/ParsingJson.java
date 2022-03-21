@@ -4,18 +4,27 @@ import Lesson3.Parse;
 import Lesson3.body.Game;
 import Lesson3.logic.GamePlay;
 import Lesson3.logic.GameResult;
-import Lesson3.logic.XmlReader.Move;
-import Lesson3.logic.XmlReader.Player;
+import Lesson3.logic.Xml.Move;
+import Lesson3.logic.Xml.Player;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.util.List;
 
 
 public class ParsingJson implements Parse {
 
-   @Override
+    @Override
+    public void read(final String file) throws Exception {
+
+        FileReader reader = new FileReader(file);
+        Gson gson = new Gson();
+
+        JsonRoot jsonRoot = gson.fromJson(reader, JsonRoot.class);
+    }
+
+    @Override
     public void parse(Player player1, Player player2, List<Move> moves) {
 
        GamePlay gamePlay = new GamePlay(Game.playerOne,Game.playerTwo, Game.moves);
@@ -38,7 +47,6 @@ gamePlay.setGameResult(gameResult);
                create();
 
        String json = GSON.toJson(gamePlay);
-       System.out.println(json);
 
        try(FileOutputStream outputStream = new FileOutputStream("Gameplay.json")) {
            outputStream.write(json.getBytes());

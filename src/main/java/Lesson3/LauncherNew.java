@@ -2,36 +2,47 @@ package Lesson3;
 
 import Lesson3.body.Game;
 import Lesson3.logic.GamePlay;
-import Lesson3.logic.Json.JsonRoot;
 import Lesson3.logic.Json.ParsingJson;
-import Lesson3.logic.Json.ReadJson;
-import Lesson3.logic.XmlReader.Root;
-
+import Lesson3.logic.Xml.ParsingXml;
 
 
 public class LauncherNew {
 
 public static GamePlay gamePlay;
 public static ParsingJson parsingJson;
+public static ParsingXml parsingXml;
+public enum ConvertType{
+
+    XML,
+    JSON
+
+}
 
     public static void main(String[] args) throws Exception {
         gamePlay = new GamePlay();
         parsingJson = new ParsingJson();
+        parsingXml = new ParsingXml();
 
-        if (args.length == 0) {
-            new Game(false).play();
+
+        String convertTypeString = args[0].replace("-", "").toUpperCase();
+        ConvertType convertType = ConvertType.valueOf(convertTypeString);
+
+        if (args.length == 1) {
+            new Game(false, convertType).play();
         } else {
-            String filename = args[0];
+            String filename = args[1];
 
-            Root.read(filename);
+            String [] input = filename.split(".");
+            for (int i = 0; i < input.length; i++) {
 
-            new Game(true).play();
+                if (input[1].equals("json")) {
+                    parsingJson.read(filename);
+                } else {
+                    parsingXml.read(filename);
+                }
+            }
+
+            new Game(true, convertType).play();
         }
-
-        ReadJson readJson = new ReadJson();
-        JsonRoot jsonRoot = readJson.read("Gameplay.json");
-        System.out.println(jsonRoot.toString());
-
-
     }
 }
