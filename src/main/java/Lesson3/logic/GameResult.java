@@ -24,4 +24,12 @@ public class GameResult {
     public  void initDrawString() {
         this.drawString = "its DRAW";
     }
+
+    @Override
+    public String toString() {
+        return "GameResult{" +
+                "player=" + player +
+                ", drawString='" + drawString + '\'' +
+                '}';
+    }
 }
