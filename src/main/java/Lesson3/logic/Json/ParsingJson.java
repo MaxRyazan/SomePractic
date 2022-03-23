@@ -1,7 +1,7 @@
 package Lesson3.logic.Json;
 
 import Lesson3.Parse;
-import Lesson3.body.Game;
+
 import Lesson3.logic.GamePlay;
 import Lesson3.logic.GameResult;
 import Lesson3.logic.Xml.Move;
@@ -12,47 +12,49 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.util.List;
 
+import static Lesson3.body.Game.*;
+
 
 public class ParsingJson implements Parse {
 
     @Override
-    public void read(final String file) throws Exception {
+    public JsonRoot read(final String file) throws Exception {
 
         FileReader reader = new FileReader(file);
         Gson gson = new Gson();
 
-        JsonRoot jsonRoot = gson.fromJson(reader, JsonRoot.class);
+        return gson.fromJson(reader, JsonRoot.class);
     }
 
     @Override
-    public void parse(Player player1, Player player2, List<Move> moves) {
+    public void parse(Player player1, Player player2, List<Move> move) {
 
-       GamePlay gamePlay = new GamePlay(Game.playerOne,Game.playerTwo, Game.moves);
+        GamePlay gamePlay = new GamePlay(playerOne,playerTwo, moves);
 
-       GameResult gameResult = new GameResult();
+        GameResult gameResult = new GameResult();
 
-       if(player1.isWinner()) {
-           gameResult.setPlayer(player1);
-       } else if(player2.isWinner()) {
-           gameResult.setPlayer(player2);
-       } else {
-           gameResult.initDrawString();
-       }
+        if(player1.isWinner()) {
+            gameResult.setPlayer(player1);
+        } else if(player2.isWinner()) {
+            gameResult.setPlayer(player2);
+        } else {
+            gameResult.initDrawString();
+        }
 
-gamePlay.setGameResult(gameResult);
+        gamePlay.setGameResult(gameResult);
 
-       final Gson GSON = new GsonBuilder().
-               setPrettyPrinting().
-               excludeFieldsWithoutExposeAnnotation().
-               create();
+        final Gson GSON = new GsonBuilder().
+                setPrettyPrinting().
+                excludeFieldsWithoutExposeAnnotation().
+                create();
 
-       String json = GSON.toJson(gamePlay);
+        String json = GSON.toJson(gamePlay);
 
-       try(FileOutputStream outputStream = new FileOutputStream("Gameplay.json")) {
-           outputStream.write(json.getBytes());
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
+        try(FileOutputStream outputStream = new FileOutputStream("Gameplay.json")) {
+            outputStream.write(json.getBytes());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 }

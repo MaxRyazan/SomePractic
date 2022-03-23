@@ -4,16 +4,16 @@ import com.google.gson.annotations.Expose;
 
 public  final class Move {
     @Expose
-       int playerId;
+    int playerId;
     @Expose
-       int coordinate;
+    int coordinate;
     @Expose
-     public    int num;
+    public    int num;
 
     public Move( int playerId,  int coordinate,  int num) {
         this.playerId = playerId;
         this.coordinate = coordinate;
-         this.num = num;
+        this.num = num;
     }
 
     public Move() {

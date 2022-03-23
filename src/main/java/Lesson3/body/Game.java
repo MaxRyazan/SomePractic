@@ -3,6 +3,7 @@ package Lesson3.body;
 import Lesson3.LauncherNew;
 import Lesson3.Parse;
 import Lesson3.logic.*;
+import Lesson3.logic.Json.JsonRoot;
 import Lesson3.logic.Json.ParsingJson;
 import Lesson3.logic.Xml.Move;
 import Lesson3.logic.Xml.ParsingXml;
@@ -20,8 +21,6 @@ public class Game {
     public static Player playerTwo;
     @Expose
     public static  List<Move> moves = new ArrayList<>();
-
-//    public static  List<Player> players = new ArrayList<>();
 
     private final Logs logs;
 
@@ -51,7 +50,7 @@ public class Game {
         if(LauncherNew.ConvertType.XML.equals(convertType)){
             parser = new ParsingXml();
         } else {
-                parser = new ParsingJson();
+            parser = new ParsingJson();
         }
 
         playerOne = new Player();
@@ -59,7 +58,7 @@ public class Game {
 
     }
 
-    public void play()
+    public void play(JsonRoot infoFromFile)
             throws Exception {
         if (!isFromFile) {
             playerOne.setName(CheckGamersNames.getPlayersName("Введите имя первого игрока:"));
@@ -70,8 +69,9 @@ public class Game {
             playerTwo.setId("2");
             playerTwo.setSymbol("O");
         } else {
-            playerOne = GamePlay.players.get(0);
-            playerTwo = GamePlay.players.get(1);
+            playerOne = infoFromFile.getPlayerOne();
+            playerTwo = infoFromFile.getPlayerTwo();
+            moves = infoFromFile.getMoves();
         }
 
         maps.printMapOnce();
@@ -91,20 +91,22 @@ public class Game {
         }
 
         if(!isFromFile) {
-           parser.parse(playerOne, playerTwo, moves);
+            parser.parse(playerOne, playerTwo, moves);
         }
 
-}
+    }
     private boolean makePlayerMove(Player player) {
         System.out.println(player.getName() + " '" + player.getSymbol() + "' :");
 
         Cell movedCell = users.printUserMove(player, isFromFile);
 
-        moves.add(new Move(
-                Integer.parseInt(player.getId()),
-                movedCell.getCellNumber(),
-                player.getMoveCounter()
-        ));
+        if(!isFromFile) {
+            moves.add(new Move(
+                    Integer.parseInt(player.getId()),
+                    movedCell.getCellNumber(),
+                    player.getMoveCounter()
+            ));
+        }
 
         Maps.refreshMap();
 

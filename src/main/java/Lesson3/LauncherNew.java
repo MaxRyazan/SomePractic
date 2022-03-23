@@ -2,21 +2,22 @@ package Lesson3;
 
 import Lesson3.body.Game;
 import Lesson3.logic.GamePlay;
+import Lesson3.logic.Json.JsonRoot;
 import Lesson3.logic.Json.ParsingJson;
 import Lesson3.logic.Xml.ParsingXml;
 
 
 public class LauncherNew {
 
-public static GamePlay gamePlay;
-public static ParsingJson parsingJson;
-public static ParsingXml parsingXml;
-public enum ConvertType{
+    public static GamePlay gamePlay;
+    public static ParsingJson parsingJson;
+    public static ParsingXml parsingXml;
+    public enum ConvertType{
 
-    XML,
-    JSON
+        XML,
+        JSON
 
-}
+    }
 
     public static void main(String[] args) throws Exception {
         gamePlay = new GamePlay();
@@ -28,21 +29,21 @@ public enum ConvertType{
         ConvertType convertType = ConvertType.valueOf(convertTypeString);
 
         if (args.length == 1) {
-            new Game(false, convertType).play();
+            new Game(false, convertType).play(null);
         } else {
             String filename = args[1];
+            String [] input = filename.split("\\.");
+            JsonRoot jsonRoot = null;
 
-            String [] input = filename.split(".");
-            for (int i = 0; i < input.length; i++) {
 
-                if (input[1].equals("json")) {
-                    parsingJson.read(filename);
-                } else {
-                    parsingXml.read(filename);
-                }
+            if (input[1].equals("json")) {
+                jsonRoot = parsingJson.read(filename);
+            } else {
+                jsonRoot = parsingXml.read(filename);
             }
 
-            new Game(true, convertType).play();
+
+            new Game(true, convertType).play(jsonRoot);
         }
     }
 }

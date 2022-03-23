@@ -1,42 +1,42 @@
 package Lesson3.logic.Json;
 
+import Lesson3.body.Game;
 import Lesson3.logic.GameResult;
 import Lesson3.logic.Xml.Move;
 import Lesson3.logic.Xml.Player;
 import java.util.List;
-import static Lesson3.body.Game.*;
 
 public class JsonRoot {
 
-private Player player1 = playerOne;
-private Player player2 = playerTwo;
+    private Player playerOne;
+    private Player playerTwo;
 
-List<Move> moveList = moves;
+    List<Move> moves;
 
-GameResult gameResult;
+    GameResult gameResult;
 
-    public Player getPlayer1() {
-        return player1;
+    public Player getPlayerOne() {
+        return playerOne;
     }
 
-    public void setPlayer1( Player player1) {
-        this.player1 = player1;
+    public void setPlayerOne(Player playerOne) {
+        this.playerOne = playerOne;
     }
 
-    public Player getPlayer2() {
-        return player2;
+    public Player getPlayerTwo() {
+        return playerTwo;
     }
 
-    public void setPlayer2( Player player2) {
-        this.player2 = player2;
+    public void setPlayerTwo(Player playerTwo) {
+        this.playerTwo = playerTwo;
     }
 
-    public List<Move> getMoveList() {
-        return moveList;
+    public List<Move> getMoves() {
+        return moves;
     }
 
-    public void setMoveList(final List<Move> moveList) {
-        this.moveList = moveList;
+    public void setMoves(final List<Move> moves) {
+        this.moves = moves;
     }
 
     public GameResult getGameResult() {
@@ -50,9 +50,9 @@ GameResult gameResult;
     @Override
     public String toString() {
         return "JsonRoot{" +
-                "player1=" + player1 +
-                ", player2=" + player2 +
-                ", moveList=" + moveList +
+                "player1=" + playerOne +
+                ", player2=" + playerTwo +
+                ", moveList=" + moves +
                 ", gameResult=" + gameResult +
                 '}';
     }

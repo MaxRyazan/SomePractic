@@ -1,6 +1,8 @@
 package Lesson3.logic.Xml;
 
 import Lesson3.Parse;
+import Lesson3.logic.Json.JsonRoot;
+import java.util.ArrayList;
 import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -17,34 +19,31 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.List;
 
-import static Lesson3.body.Game.moves;
-
-import static Lesson3.logic.GamePlay.players;
 
 
 public class ParsingXml implements Parse {
 
     @Override
-    public void read(final String filename) throws Exception {
+    public JsonRoot read(final String filename) throws Exception {
         File file = new File(filename);
         Document doc;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         doc = dbf.newDocumentBuilder().parse(file);
 
+        JsonRoot jsonRoot = new JsonRoot();
+        Player playerOne = new Player();
+        Player playerTwo = new Player();
+        List<Move> moves = new ArrayList<>();
+
+
         NodeList playerElements = doc.getDocumentElement().getElementsByTagName("PLayer");
-        for (int i = 0; i < playerElements.getLength(); i++) {
-            Node player = playerElements.item(i);
-            NamedNodeMap attributes = player.getAttributes();
-            players.add(new Player(attributes.getNamedItem("id").getNodeValue(),
-                    attributes.getNamedItem("name").getNodeValue(),
-                    attributes.getNamedItem("symbol").getNodeValue()
-            ));
-        }
-        for (Player value : players) {
-            System.out.printf("Информации о игроках: ID игрока - %s, имя игрока - %s, символ игрока - %s %n",
-                    value.getId(), value.getName(), value.getSymbol()
-            );
-        }
+
+        fillPlayerInfo(playerOne, playerElements.item(0));
+        fillPlayerInfo(playerTwo, playerElements.item(1));
+
+        jsonRoot.setPlayerOne(playerOne);
+        jsonRoot.setPlayerTwo(playerTwo);
+
 
         NodeList movesElements = doc.getDocumentElement().getElementsByTagName("Step");
 
@@ -62,6 +61,21 @@ public class ParsingXml implements Parse {
                     value.getNum(), value.getPlayerId(), value.getCoordinate()
             );
         }
+
+        jsonRoot.setMoves(moves);
+
+        return jsonRoot;
+    }
+
+    private void fillPlayerInfo(Player player, Node playerNode) {
+        NamedNodeMap attributes = playerNode.getAttributes();
+
+        player.setId(attributes.getNamedItem("id").getNodeValue());
+        player.setName(attributes.getNamedItem("name").getNodeValue());
+        player.setSymbol(attributes.getNamedItem("symbol").getNodeValue());
+
+        System.out.printf("Информации о игроках: ID игрока - %s, имя игрока - %s, символ игрока - %s %n",
+                player.getId(), player.getName(), player.getSymbol());
     }
 
     public void parse(Player playerOne, Player playerTwo, List<Move> moves) throws ParserConfigurationException, FileNotFoundException, TransformerException {
