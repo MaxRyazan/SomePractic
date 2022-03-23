@@ -32,7 +32,7 @@ public class ParsingXml implements Parse {
 
         JsonRoot jsonRoot = new JsonRoot();
         Player playerOne = new Player();
-        Player playerTwo = new Player();
+        Player  playerTwo = new Player();
         List<Move> moves = new ArrayList<>();
 
 
