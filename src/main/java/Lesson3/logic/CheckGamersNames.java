@@ -24,7 +24,7 @@ public class CheckGamersNames {
     }
 
     private static boolean checkName(String name) {
-        return !name.isBlank();
+        return !name.isEmpty();
     }
 
 }

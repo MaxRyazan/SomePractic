@@ -1,0 +1,46 @@
+{
+  "playerOne": {
+    "id": "1",
+    "name": "11",
+    "symbol": "X"
+  },
+  "playerTwo": {
+    "id": "2",
+    "name": "22",
+    "symbol": "O"
+  },
+  "moves": [
+    {
+      "playerId": 1,
+      "coordinate": 5,
+      "num": 1
+    },
+    {
+      "playerId": 2,
+      "coordinate": 1,
+      "num": 1
+    },
+    {
+      "playerId": 1,
+      "coordinate": 2,
+      "num": 2
+    },
+    {
+      "playerId": 2,
+      "coordinate": 4,
+      "num": 2
+    },
+    {
+      "playerId": 1,
+      "coordinate": 8,
+      "num": 3
+    }
+  ],
+  "gameResult": {
+    "player": {
+      "id": "1",
+      "name": "11",
+      "symbol": "X"
+    }
+  }
+}

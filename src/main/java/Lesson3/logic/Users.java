@@ -101,7 +101,7 @@ public class Users {
     }
 
     private boolean isNotBlank(String name) {
-        return !name.isBlank();
+        return !name.isEmpty() ;
     }
 
     public static Move getMoveByIdAndName(Integer playerId, Integer moveCounter ) {

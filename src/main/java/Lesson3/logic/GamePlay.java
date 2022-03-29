@@ -18,10 +18,11 @@ public class GamePlay {
     @Expose
     private GameResult gameResult;
 
-    public static  List<Player> players = new ArrayList<>();
+    public GameResult getGameResult() {
+        return gameResult;
+    }
 
-
-    public GamePlay(Player player1,  Player player2, List<Move> moves) {
+    public GamePlay(Player player1, Player player2, List<Move> moves) {
         playerOne = player1;
         playerTwo = player2;
         this.moves = moves;
